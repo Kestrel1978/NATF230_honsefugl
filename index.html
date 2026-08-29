@@ -279,6 +279,819 @@
     justify-content:center;
     isolation:isolate;
   }
+.hero-logo{
+  position:absolute;
+  top:24px;
+  right:28px;
+  width:155px;
+  max-width:22%;
+  height:auto;
+  z-index:2;
+}
+
+.hero h1{
+  padding-right:185px;
+  max-width:900px;
+}
+
+@media(max-width:760px){
+  .hero-logo{
+    top:18px;
+    right:18px;
+    width:105px;
+    max-width:28%;
+  }
+
+  .hero h1{
+    padding-right:120px;
+  }
+}
+
+@media(max-width:480px){
+  .hero-logo{
+    width:82px;
+    top:15px;
+    right:15px;
+  }
+
+  .hero h1{
+    padding-right:90px;
+  }
+}
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:auto 0 0 0;
+    height:110px;
+    background:linear-gradient(to bottom,rgba(15,61,51,0),rgba(15,61,51,.22));
+    pointer-events:none;
+    border-radius:0 0 18px 18px;
+    z-index:-1;
+  }
+.hero-logo{
+  position:absolute;
+  top:24px;
+  right:28px;
+  width:155px;
+  max-width:22%;
+  height:auto;
+  z-index:2;
+}
+
+.hero h1{
+  padding-right:185px;
+  max-width:900px;
+}
+  .hero-scroll-cue span{
+    display:inline-block;
+    margin-left:5px;
+    animation:storyBounce 1.7s ease-in-out infinite;
+  }
+
+  .story-rail{
+    position:sticky;
+    top:8px;
+    z-index:60;
+    margin:0 0 34px;
+    padding:10px 12px 11px;
+    border:1px solid rgba(217,226,236,.95);
+    border-radius:14px;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    box-shadow:0 6px 20px rgba(15,61,51,.08);
+  }
+  .story-rail-top{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:9px;
+  }
+  .story-location{
+    min-width:108px;
+    font-size:13px;
+    font-weight:800;
+    color:var(--green-900);
+    white-space:nowrap;
+  }
+  .reading-progress-shell{
+    flex:1;
+    height:5px;
+    overflow:hidden;
+    background:#e7eeeb;
+    border-radius:999px;
+  }
+  .reading-progress-bar{
+    width:0%;
+    height:100%;
+    background:var(--green-800);
+    border-radius:999px;
+    transition:width .12s linear;
+  }
+  .story-steps{
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:6px;
+  }
+  .story-step{
+    min-width:0;
+    min-height:42px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+    padding:7px 8px;
+    border:0;
+    border-radius:9px;
+    background:transparent;
+    color:#66757f;
+    font-size:12px;
+    cursor:pointer;
+    transition:background .2s ease,color .2s ease,transform .2s ease;
+  }
+  .story-dot{
+    width:8px;
+    height:8px;
+    flex:0 0 8px;
+    border-radius:50%;
+    background:#c6d0d6;
+    box-shadow:0 0 0 3px transparent;
+    transition:all .2s ease;
+  }
+  .story-step.is-active{
+    background:var(--green-100);
+    color:var(--green-900);
+    font-weight:800;
+  }
+  .story-step.is-active .story-dot{
+    background:var(--green-800);
+    box-shadow:0 0 0 3px rgba(23,75,63,.13);
+  }
+  .story-step.is-complete{
+    color:var(--green-800);
+  }
+  .story-step.is-complete .story-dot{
+    background:#3b873e;
+  }
+  .story-step.is-locked{
+    opacity:.48;
+  }
+  .story-step:focus-visible{
+    outline:3px solid rgba(31,78,95,.22);
+    outline-offset:2px;
+  }
+
+  .chapter-kicker{
+    margin-bottom:7px;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.11em;
+    font-weight:800;
+    color:#5f786e;
+  }
+
+  .module{
+    margin:72px 0 84px;
+    overflow:visible;
+    transition:opacity .35s ease,filter .35s ease,transform .35s ease;
+    scroll-margin-top:110px;
+  }
+  .module-header{
+    position:sticky;
+    top:112px;
+    z-index:20;
+    border:1px solid var(--line);
+    border-radius:16px 16px 0 0;
+    transition:box-shadow .25s ease,background .25s ease;
+  }
+  .module.is-story-active .module-header{
+    box-shadow:0 8px 22px rgba(15,61,51,.11);
+    background:linear-gradient(90deg,#e7f3ee,#f4f9fb);
+  }
+  .module-body{
+    background:#fff;
+    border:1px solid var(--line);
+    border-top:0;
+    border-radius:0 0 16px 16px;
+  }
+  .module.locked{
+    opacity:.46;
+    filter:saturate(.65);
+  }
+  .module.locked .module-header{
+    position:relative;
+    top:auto;
+    border-radius:16px 16px 0 0;
+  }
+
+  .story-reveal{
+    opacity:.20;
+    transform:translate3d(0,26px,0) scale(.992);
+    transition:opacity .65s cubic-bezier(.2,.65,.3,1),
+               transform .65s cubic-bezier(.2,.65,.3,1);
+    will-change:opacity,transform;
+  }
+  .story-reveal.is-visible{
+    opacity:1;
+    transform:translate3d(0,0,0) scale(1);
+  }
+
+  .source-callout,
+  .figure-box,
+  .blueberry-focus,
+  .evidence-note,
+  .caution,
+  .bridge{
+    scroll-margin-top:178px;
+  }
+
+  .figure-box{
+    box-shadow:0 8px 24px rgba(31,78,95,.04);
+  }
+  .figure-box.is-visible{
+    box-shadow:0 12px 34px rgba(31,78,95,.09);
+  }
+  .study-image.no-parallax{
+    transform:none !important;
+  }
+
+  .parallax-frame{
+    position:relative;
+    overflow:hidden;
+    border-radius:12px;
+    margin-bottom:18px;
+    background:#e9efec;
+  }
+  .parallax-frame .module-photo,
+  .parallax-frame .blueberry-focus>img,
+  .parallax-frame img{
+    margin:0;
+  }
+  .parallax-image{
+    width:100%;
+    transform:translate3d(0,var(--parallax-y,0px),0) scale(1.055);
+    transform-origin:center center;
+    will-change:transform;
+  }
+  .micro-parallax{
+    transform:translate3d(0,var(--micro-y,0px),0) scale(1.025);
+    transform-origin:center center;
+    will-change:transform;
+  }
+
+  .story-transition{
+    display:none;
+    min-height:330px;
+    margin:18px 0 80px;
+    padding:42px 28px;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    border-radius:18px;
+    background:
+      radial-gradient(circle at 50% 20%,rgba(238,247,244,.95),rgba(248,251,253,.95) 58%,#fff 100%);
+    border:1px solid var(--line);
+    scroll-margin-top:115px;
+  }
+  .story-transition.is-unlocked{
+    display:flex;
+  }
+  .story-transition-inner{
+    max-width:720px;
+  }
+  .transition-label{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-weight:800;
+    color:#668078;
+    margin-bottom:9px;
+  }
+  .story-transition h2{
+    margin:0 0 12px;
+    color:var(--green-900);
+    font-size:28px;
+    line-height:1.2;
+  }
+  .story-transition p{
+    margin:0;
+    color:#435466;
+    font-size:16px;
+  }
+  .transition-arrow{
+    margin-top:22px;
+    font-size:28px;
+    color:var(--green-800);
+    animation:storyBounce 1.7s ease-in-out infinite;
+  }
+
+  .reflection{
+    padding-top:22px;
+    padding-bottom:22px;
+    box-shadow:0 10px 28px rgba(133,77,14,.06);
+  }
+  .module-end-marker{
+    margin-top:52px;
+  }
+
+  .final-story-pulse{
+    animation:finalPulse .7s ease both;
+  }
+
+  @keyframes storyBounce{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(5px)}
+  }
+  @keyframes finalPulse{
+    from{transform:scale(.985);opacity:.4}
+    to{transform:scale(1);opacity:1}
+  }
+
+  @media(max-width:760px){
+    .story-rail{
+      top:4px;
+      border-radius:11px;
+      padding:8px;
+      margin-bottom:24px;
+    }
+    .story-rail-top{margin-bottom:6px}
+    .story-location{min-width:88px;font-size:12px}
+    .story-steps{gap:2px}
+    .story-step{
+      min-height:38px;
+      padding:5px 3px;
+      font-size:10px;
+      gap:4px;
+    }
+    .story-dot{width:7px;height:7px;flex-basis:7px}
+    .module{
+      margin:46px 0 58px;
+    }
+    .module-header{
+      top:88px;
+      padding:17px 16px;
+    }
+    .module-header h2{font-size:19px}
+    .module-body{padding:18px 15px}
+    .story-transition{
+      min-height:280px;
+      padding:32px 18px;
+      margin-bottom:56px;
+    }
+    .story-transition h2{font-size:23px}
+    .hero{min-height:300px}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .story-reveal{
+      opacity:1 !important;
+      transform:none !important;
+      transition:none !important;
+    }
+    .parallax-image,.micro-parallax{
+      transform:none !important;
+    }
+    .hero-scroll-cue span,.transition-arrow{
+      animation:none !important;
+    }
+    .reading-progress-bar{
+      transition:none !important;
+    }
+  }
+
+  /* ===== Compact story header while reading ===== */
+
+  /* Module title is full-size at module entry, then scrolls away normally.
+     The compact corner rail carries the title while reading. */
+  .module-header{
+    position:relative !important;
+    top:auto !important;
+    z-index:10;
+    transition:box-shadow .25s ease, background .25s ease;
+  }
+
+  .story-rail{
+    transform-origin:top right;
+    transition:
+      width .28s ease,
+      padding .28s ease,
+      margin .28s ease,
+      border-radius .28s ease,
+      box-shadow .28s ease,
+      background .28s ease,
+      transform .28s ease;
+  }
+
+  /* Compact corner mode */
+  .story-rail.is-compact{
+    position:fixed;
+    top:12px;
+    right:14px;
+    left:auto;
+    width:230px;
+    margin:0;
+    padding:9px 11px;
+    border-radius:12px;
+    background:rgba(255,255,255,.95);
+    box-shadow:0 8px 26px rgba(15,61,51,.14);
+    z-index:80;
+  }
+
+  .story-rail.is-compact .story-rail-top{
+    margin:0;
+    gap:9px;
+  }
+
+  .story-rail.is-compact .story-location{
+    min-width:0;
+    max-width:150px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-size:12px;
+  }
+
+  .story-rail.is-compact .reading-progress-shell{
+    height:4px;
+    min-width:58px;
+  }
+
+  .story-rail.is-compact .story-steps{
+    display:none;
+  }
+
+  /* tiny module counter visible only in compact mode */
+  .compact-module-count{
+    display:none;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:#6c7e77;
+    white-space:nowrap;
+  }
+
+  .story-rail.is-compact .compact-module-count{
+    display:block;
+  }
+
+  /* Prevent compact rail from covering the reading column */
+  .story-rail.is-compact + *{
+    scroll-margin-top:70px;
+  }
+
+  /* A little extra air at the top of modules because the full header is no longer sticky */
+  .module{
+    scroll-margin-top:92px;
+  }
+
+  /* When entering a new module, emphasize the full header for a moment */
+  .module.is-module-entry .module-header{
+    box-shadow:0 10px 30px rgba(15,61,51,.13);
+  }
+
+  @media(max-width:760px){
+    .story-rail.is-compact{
+      top:7px;
+      right:7px;
+      width:188px;
+      padding:7px 9px;
+      border-radius:10px;
+    }
+    .story-rail.is-compact .story-location{
+      max-width:112px;
+      font-size:11px;
+    }
+    .compact-module-count{
+      font-size:9px;
+    }
+  }
+
+  @media(max-width:430px){
+    .story-rail.is-compact{
+      width:166px;
+    }
+    .story-rail.is-compact .story-location{
+      max-width:95px;
+    }
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .story-rail{
+      transition:none !important;
+    }
+  }
+
+  /* ===== Stability fix for compact progress rail =====
+     The slot stays in normal document flow while the rail itself can become fixed.
+     This prevents the page from jumping and eliminates threshold oscillation. */
+  .story-rail-slot{
+    position:relative;
+    min-height:var(--story-rail-slot-height, 94px);
+    margin:0 0 34px;
+  }
+  .story-rail-slot > .story-rail{
+    margin:0;
+  }
+  .story-rail-slot > .story-rail.is-compact{
+    margin:0;
+  }
+
+  @media(max-width:760px){
+    .story-rail-slot{
+      min-height:var(--story-rail-slot-height, 82px);
+      margin-bottom:24px;
+    }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+<section class="hero">
+<h1>Læringsti: Hvorfor svinger bestandene i den boreale skogen?</h1>
+<p>En vitenskapelig oppdagelsesreise gjennom sentrale hypoteser og mekanismer som kan forklare synkrone bestandssvingninger hos smågnagere og skogsfugl i Fennoskandia.</p>
+<div aria-hidden="true" class="hero-scroll-cue">Scroll for å følge læringsstien <span>↓</span></div></section><section class="intro-story" data-story-section="intro" id="storyIntro"><h2>Det fennoskandiske mysteriet</h2><p class="story-reveal">I de boreale skogene i Fennoskandia har økologer i mer enn hundre år observert at bestandene av smågnagere og flere arter av skogsfugl kan svinge kraftig fra år til år. <strong>Ofte opptrer tydelige topper og bunner med omtrent 3–5 års mellomrom.</strong> Enda mer interessant er det at smågnagere, lirype, storfugl og orrfugl i mange områder kan svinge delvis i takt.</p><p class="story-reveal">Hvorfor skjer dette? Én forklaring er at predatorer skifter mellom smågnagere og skogsfuglkyllinger som byttedyr. En annen er at smågnagere og skogsfugl reagerer på noen av de samme ressurs<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<html lang="no">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Læringsti: Hvorfor svinger bestandene i den boreale skogen?</title>
+<style>
+  :root{
+    --green-900:#0f3d33;
+    --green-800:#174b3f;
+    --green-100:#eef7f4;
+    --blue-800:#1f4e5f;
+    --blue-100:#f8fbfd;
+    --line:#d9e2ec;
+    --text:#1f2933;
+    --muted:#52606d;
+    --amber-100:#fff7e6;
+    --amber-700:#854d0e;
+    --red-100:#fff1f0;
+    --red-700:#9b2c2c;
+    --ok-100:#edf7ed;
+    --ok-700:#256029;
+    --shadow:0 8px 24px rgba(15,61,51,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#f4f7f6;color:var(--text);font-family:Arial,sans-serif;line-height:1.55}
+  .page{max-width:1100px;margin:0 auto;padding:24px}
+  .hero{background:linear-gradient(135deg,var(--green-900),var(--green-800));color:#fff;padding:30px;border-radius:18px;margin-bottom:20px;box-shadow:var(--shadow)}
+  .hero h1{margin:0 0 8px;font-size:30px;line-height:1.2}
+  .hero p{margin:0;font-size:16px;max-width:850px}
+  .toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 20px}
+  .progress-shell{flex:1;min-width:260px;background:#e8efed;border-radius:999px;height:12px;overflow:hidden}
+  .progress-bar{height:100%;width:33.33%;background:var(--green-800);transition:width .25s ease}
+  .progress-text{font-weight:700;color:var(--green-900)}
+  button{font:inherit}
+  .btn{border:0;border-radius:9px;padding:11px 16px;font-weight:700;cursor:pointer;background:var(--green-800);color:#fff}
+  .btn:hover{filter:brightness(.96)}
+  .btn:disabled{cursor:not-allowed;opacity:.45}
+  .btn.secondary{background:#fff;color:var(--green-900);border:1px solid var(--line)}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:22px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:19px}
+  .card.green{background:var(--green-100);border-left:5px solid var(--green-800)}
+  .card.blue{background:var(--blue-100);border-left:5px solid var(--blue-800)}
+  .card h2,.card h3{margin-top:0;color:var(--green-900)}
+  .module{background:#fff;border:1px solid var(--line);border-radius:16px;margin:0 0 22px;box-shadow:var(--shadow);overflow:hidden;position:relative}
+  .module.locked{opacity:.58}
+  .module.locked .module-body{display:none}
+  .module-header{padding:22px 24px;background:linear-gradient(90deg,#eef7f4,#f8fbfd);border-bottom:1px solid var(--line)}
+  .module-header h2{margin:0 0 5px;color:var(--green-900);font-size:23px}
+  .module-header p{margin:0;color:var(--muted)}
+  .module-body{padding:22px 24px}
+  .lock-note{padding:18px 24px;background:#f5f6f7;color:#61707e;font-weight:700}
+  details{background:var(--blue-100);border:1px solid var(--line);border-radius:10px;margin-bottom:12px}
+  summary{padding:15px 17px;cursor:pointer;color:var(--blue-800);font-weight:700}
+  details>div{padding:17px;border-top:1px solid var(--line);background:#fff;border-radius:0 0 10px 10px}
+  .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+  .flow div{background:var(--green-100);border:1px solid #cfe4dc;border-radius:10px;padding:12px;text-align:center;font-size:14px}
+  .figure-box{border:1px solid var(--line);background:#fbfcfd;border-radius:12px;padding:18px;margin:16px 0}
+  .figure-box strong{color:var(--blue-800)}
+  .study-image{display:block;width:100%;height:auto;max-height:760px;object-fit:contain;background:#f5f7f8;border:1px solid var(--line);border-radius:10px;margin:12px 0}
+  .module-photo{display:block;width:100%;height:auto;max-height:430px;object-fit:cover;background:#f5f7f8;border-radius:12px;margin:0 0 18px}
+  .image-caption{font-size:13px;color:var(--muted);margin:6px 0 0}
+  .filename{font-family:monospace;background:#eef2f4;border-radius:5px;padding:2px 5px;color:#435466}
+
+  .reflection{margin-top:20px;background:var(--amber-100);border-left:5px solid #d97706;padding:18px;border-radius:12px}
+  .reflection h3{margin:0 0 8px;color:var(--amber-700)}
+  textarea{width:100%;min-height:150px;margin-top:12px;padding:13px;border:1px solid #b8c4cc;border-radius:9px;font:inherit;resize:vertical;background:#fff}
+  textarea:focus{outline:3px solid rgba(31,78,95,.15);border-color:var(--blue-800)}
+  .counter{font-size:13px;color:var(--muted);margin:5px 0 10px}
+  .answer{display:none;background:var(--ok-100);border-left:5px solid #3b873e;padding:16px;border-radius:10px;margin-top:14px}
+  .answer h4{margin:0 0 7px;color:var(--ok-700)}
+  .answer.show{display:block}
+  .complete-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:15px}
+  .status{font-size:14px;color:var(--muted)}
+  .evidence{background:#f3f1ff;border-left:5px solid #6b5bd2;padding:15px;border-radius:10px;margin:14px 0}
+  .evidence strong{color:#4f46a5}
+  .footer-note{background:var(--red-100);border:1px solid #feb2b2;border-radius:12px;padding:18px;margin:22px 0}
+  .footer-note h3{margin:0 0 7px;color:var(--red-700)}
+  .refs{font-size:14px;color:var(--muted);margin-top:28px}
+  .refs>h2{color:var(--green-900);font-size:22px;margin:0 0 8px}
+  .refs>.intro{margin:0 0 16px}
+  .refs a{color:var(--blue-800);overflow-wrap:anywhere}
+  .source-list{display:grid;gap:12px}
+  .source-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px}
+  .source-card p{margin:0 0 8px}
+  .source-card p:last-child{margin-bottom:0}
+  .source-card .citation{color:var(--text);font-size:14px}
+  .source-card .relevance{font-size:13px;color:var(--muted)}
+  .source-card .relevance strong{color:var(--green-800)}
+  @media(max-width:760px){
+    .page{padding:12px}
+    .grid,.flow{grid-template-columns:1fr}
+    .hero{padding:22px}
+    .hero h1{font-size:25px}
+  }
+
+  .module-lead{font-size:16px;color:#334e46;margin:0 0 16px}
+  .concept-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+  .concept-card{background:#f8fbfd;border:1px solid var(--line);border-radius:10px;padding:14px}
+  .concept-card h4{margin:0 0 6px;color:var(--green-900);font-size:15px}
+  .concept-card p{margin:0;font-size:14px;color:#435466}
+  .source-callout{background:#eef7f4;border-left:5px solid var(--green-800);border-radius:10px;padding:16px;margin:16px 0}
+  .source-callout h4{margin:0 0 7px;color:var(--green-900)}
+  .source-callout p{margin:0 0 8px}
+  .source-callout p:last-child{margin-bottom:0}
+  .evidence-note{background:#f3f1ff;border-left:5px solid #6b5bd2;border-radius:10px;padding:15px;margin:16px 0}
+  .evidence-note strong{color:#4f46a5}
+  .caution{background:#fff7e6;border-left:5px solid #d97706;border-radius:10px;padding:15px;margin:16px 0}
+  .caution strong{color:#854d0e}
+  .figure-reading{background:#fff;border:1px solid var(--line);border-radius:9px;padding:13px 15px;margin:12px 0}
+  .figure-reading h4{margin:0 0 7px;color:var(--blue-800);font-size:15px}
+  .figure-reading ul{margin:0;padding-left:20px}
+  .figure-reading li{margin-bottom:5px}
+  .takeaway{background:#edf7ed;border-left:5px solid #3b873e;border-radius:10px;padding:14px 16px;margin:14px 0}
+  .takeaway strong{color:#256029}
+  .method-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0}
+  .method-strip>div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px;font-size:14px}
+  .method-strip strong{display:block;color:var(--green-900);margin-bottom:5px}
+  .bridge{background:linear-gradient(90deg,#eef7f4,#f8fbfd);border:1px solid #cfe4dc;border-radius:11px;padding:16px;margin:18px 0}
+  .bridge h4{margin:0 0 7px;color:var(--green-900)}
+  .citation-line{font-size:13px;color:var(--muted);margin-top:9px}
+  .citation-line a{color:var(--blue-800)}
+  @media(max-width:760px){.concept-grid,.method-strip{grid-template-columns:1fr}}
+
+  .figure-transition{
+    margin:18px 0 6px;
+    font-weight:700;
+    color:var(--blue-800);
+    letter-spacing:.01em
+  }
+  .source-callout + .figure-transition{margin-top:14px}
+  .figure-transition + .figure-box{margin-top:6px}
+  .figure-box{scroll-margin-top:18px}
+
+  .intro-story{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:24px 26px;
+    margin:0 0 20px;
+    box-shadow:var(--shadow);
+  }
+  .intro-story h2{
+    margin:0 0 12px;
+    color:var(--green-900);
+    font-size:24px;
+  }
+  .intro-story p{
+    margin:0 0 13px;
+    max-width:930px;
+  }
+  .intro-story p:last-child{margin-bottom:0}
+  .intro-question{
+    background:var(--green-100);
+    border-left:5px solid var(--green-800);
+    border-radius:10px;
+    padding:15px 17px;
+    margin:16px 0;
+    color:var(--green-900);
+  }
+
+  .species-gallery{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:12px;
+    margin:16px 0 6px;
+  }
+  .species-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+  }
+  .species-card img{
+    display:block;
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    background:#f4f6f7;
+  }
+  .species-meta{padding:10px 11px 11px}
+  .species-name{
+    display:block;
+    font-weight:700;
+    color:var(--green-900);
+    margin-bottom:3px;
+  }
+  .photo-credit{
+    display:block;
+    font-size:12px;
+    color:var(--muted);
+  }
+  .photo-credit-wide{
+    margin:-10px 0 18px;
+    padding:0 3px;
+    font-size:12px;
+    color:var(--muted);
+  }
+  .species-pair{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+    margin:14px 0 18px;
+  }
+  .species-pair .species-card img{aspect-ratio:16/10}
+  .article-species{
+    max-width:470px;
+    margin:14px 0 6px;
+  }
+  .article-species .species-card img{aspect-ratio:16/10}
+  .species-intro{margin:18px 0 8px}
+  .species-intro h3{
+    margin:0 0 8px;
+    color:var(--green-900);
+  }
+  @media(max-width:800px){
+    .species-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media(max-width:520px){
+    .species-gallery,.species-pair{grid-template-columns:1fr}
+  }
+
+  .blueberry-focus{
+    margin:18px 0 22px;
+    background:#f8fbf7;
+    border:1px solid #cfe4dc;
+    border-radius:14px;
+    padding:16px;
+  }
+  .blueberry-focus>img{
+    display:block;
+    width:100%;
+    max-height:500px;
+    object-fit:cover;
+    border-radius:10px;
+    background:#f4f6f7;
+  }
+  .module-end-marker{
+    margin:28px 0 10px;
+    padding-top:20px;
+    border-top:2px solid #d9e2ec;
+    color:var(--green-900);
+    font-size:13px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+  .credits{
+    background:#f4f7f6;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:18px 20px;
+    margin:24px 0 8px;
+    font-size:14px;
+  }
+  .credits h2{
+    margin:0 0 10px;
+    color:var(--green-900);
+    font-size:19px;
+  }
+  .credits ul{
+    margin:0;
+    padding-left:20px;
+  }
+  .credits li{margin:4px 0}
+
+  /* ===== Scrollytelling layer ===== */
+  html{scroll-behavior:smooth}
+  body{overflow-x:hidden}
+
+  .hero{
+    position:relative;
+    min-height:360px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    isolation:isolate;
+  }
   .hero::after{
     content:"";
     position:absolute;
@@ -763,9 +1576,569 @@
 <body>
 <main class="page">
 <section class="hero">
-<h1>Læringsti: Hvorfor svinger bestandene i den boreale skogen?</h1>
-<p>En vitenskapelig oppdagelsesreise gjennom sentrale hypoteser og mekanismer som kan forklare synkrone bestandssvingninger hos smågnagere og skogsfugl i Fennoskandia.</p>
-<div aria-hidden="true" class="hero-scroll-cue">Scroll for å følge læringsstien <span>↓</span></div></section><section class="intro-story" data-story-section="intro" id="storyIntro"><h2>Det fennoskandiske mysteriet</h2><p class="story-reveal">I de boreale skogene i Fennoskandia har økologer i mer enn hundre år observert at bestandene av smågnagere og flere arter av skogsfugl kan svinge kraftig fra år til år. <strong>Ofte opptrer tydelige topper og bunner med omtrent 3–5 års mellomrom.</strong> Enda mer interessant er det at smågnagere, lirype, storfugl og orrfugl i mange områder kan svinge delvis i takt.</p><p class="story-reveal">Hvorfor skjer dette? Én forklaring er at predatorer skifter mellom smågnagere og skogsfuglkyllinger som byttedyr. En annen er at smågnagere og skogsfugl reagerer på noen av de samme ressursene, blant annet blåbærlyng. I tillegg kan temperatur, snøforhold og værmønstre påvirke flere ledd i næringsnettet samtidig.</p><div class="intro-question story-reveal"><strong>Læringsstiens hovedspørsmål:</strong> Hvordan kan predasjon, plantekvalitet, smågnagere og klima virke sammen og skape synkrone bestandssvingninger i den boreale skogen?</div><div class="species-intro story-reveal"><h3>Møt noen av skogsfuglene</h3><p>Storfugl og orrfugl er tydelig kjønnsdimorfe: hann og hunn ser svært forskjellige ut. Disse artene møter du igjen i tidsseriene senere i læringsstien.</p><div class="species-gallery"><div class="species-card"><img alt="Tiur, hann av storfugl" class="micro-parallax" loading="lazy" src="images_web/art_tiur.webp"/><div class="species-meta"><span class="species-name">Tiur</span><span class="photo-credit">Foto: Bjørn Aksel Bjerke</span></div></div><div class="species-card"><img alt="Røy, hunn av storfugl" class="micro-parallax" loading="lazy" src="images_web/art_roy.webp"/><div class="species-meta"><span class="species-name">Røy</span><span class="photo-credit">Foto: Bjørn Aksel Bjerke</span></div></div><div class="species-card"><img alt="Orrhane, hann av orrfugl" class="micro-parallax" loading="lazy" src="images_web/art_orrhane.webp"/><div class="species-meta"><span class="species-name">Orrhane</span><span class="photo-credit">Foto: Bjørn Aksel Bjerke</span></div></div><div class="species-card"><img alt="Orrhøne, hunn av orrfugl" class="micro-parallax" loading="lazy" src="images_web/art_orrhone.webp"/><div class="species-meta"><span class="species-name">Orrhøne</span><span class="photo-credit">Foto: Bjørn Aksel Bjerke</span></div></div></div></div><p class="story-reveal">Gjennom læringsstien skal du undersøke dette som en økolog: Du møter først en forklaring, studerer data fra forskning, vurderer hva figuren faktisk viser, og spør deretter om funnene støtter hypotesen eller peker mot en mer sammensatt forklaring. <em>Målet er ikke å finne én fasit, men å forstå hvordan flere mekanismer kan virke samtidig og med tidsforsinkelser.</em></p></section>
+
+  <img
+    class="hero-logo"
+    src="images_web/nmbu_logo_hvit.png"
+    alt="NMBU"
+  />
+
+  <h1>Læringsti: Hvorfor svinger bestandene i den boreale skogen?</h1>
+
+  <p>En vitenskapelig oppdagelsesreise gjennom sentrale hypoteser og mekanismer som kan forklare synkrone bestandssvingninger hos smågnagere og skogsfugl i Fennoskandia.</p>
+
+  <div aria-hidden="true" class="hero-scroll-cue">
+    Scroll for å følge læringsstien <span>↓</span>
+  </div>
+
+</section><section class="intro-story" data-story-section="intro" id="storyIntro"><h2>Det fennoskandiske mysteriet</h2><p class="story-reveal">I de boreale skogene i Fennoskandia har økologer i mer enn hundre år observert at bestandene av smågnagere og flere arter av skogsfugl kan svinge kraftig fra år til år. <strong>Ofte opptrer tydelige topper og bunner med omtrent 3–5 års mellomrom.</strong> Enda mer interessant er det at smågnagere, lirype, storfugl og orrfugl i mange områder kan svinge delvis i takt.</p><p class="story-reveal">Hvorfor skjer dette? Én forklaring er at predatorer skifter mellom smågnagere og skogsfuglkyllinger som byttedyr. En annen er at smågnagere og skogsfugl reagerer på noen av de samme ressursene, blant annet blåbærlyng. I tillegg kan temperatur, snøforhold og værmønstre påvirke flere ledd i næringsnettet samtidig.</p><div class="intro-question story-reveal"><strong>Læringsstiens hovedspørsmål:</strong> Hvordan kan predasjon, plantekvalitet, smågnagere og klima virke sammen og skape synkrone bestandssvingninger i den boreale skogen?</div><div class="species-intro story-reveal"><h3>Møt noen av skogsfuglene</h3><p>Storfugl og orrfugl er tydelig kjønnsdimorfe: hann og hunn ser svært forskjellige ut. Disse artene møter du igjen i tidsseriene senere i læringsstien.</p><div class="species-gallery"><div class="species-card"><img alt="Tiur, hann av storfugl" class="micro-parallax" loading="lazy" src="images_web/art_tiur.webp"/><div class="species-meta"><span class="species-name">Tiur</span><span class="photo-credit">Foto: Bjørn Aksel Bjerke</span></div></div><div class="species-card"><img alt="Røy, hunn av storfugl" class="micro-parallax" loading="lazy" src="images_web/art_roy.webp"/><div class="species-meta"><span class="species-name">Røy</span><span class="photo-credit">Foto: Bjørn Aksel Bjerke</span></div></div><div class="species-card"><img alt="Orrhane, hann av orrfugl" class="micro-parallax" loading="lazy" src="images_web/art_orrhane.webp"/><div class="species-meta"><span class="species-name">Orrhane</span><span class="photo-credit">Foto: Bjørn Aksel Bjerke</span></div></div><div class="species-card"><img alt="Orrhøne, hunn av orrfugl" class="micro-parallax" loading="lazy" src="images_web/art_orrhone.webp"/><div class="species-meta"><span class="species-name">Orrhøne</span><span class="photo-credit">Foto: Bjørn Aksel Bjerke</span></div></div></div></div><p class="story-reveal">Gjennom læringsstien skal du undersøke dette som en økolog: Du møter først en forklaring, studerer data fra forskning, vurderer hva figuren faktisk viser, og spør deretter om funnene støtter hypotesen eller peker mot en mer sammensatt forklaring. <em>Målet er ikke å finne én fasit, men å forstå hvordan flere mekanismer kan virke samtidig og med tidsforsinkelser.</em></p></section>
+<div aria-label="Progresjon" class="toolbar">
+<div class="progress-text" id="progressText">Modul 1 av 3</div>
+<div aria-hidden="true" class="progress-shell"><div class="progress-bar" id="progressBar"></div></div>
+<button class="btn secondary" id="resetBtn" type="button">Nullstill læringsstien</button>
+</div><div class="story-rail-slot"><nav aria-label="Progresjon i læringsstien" class="story-rail"><div class="story-rail-top"><div aria-hidden="true" class="compact-module-count" id="compactModuleCount">Start</div><div class="story-location" id="storyLocation">Introduksjon</div><div aria-hidden="true" class="reading-progress-shell"><div class="reading-progress-bar" id="readingProgressBar"></div></div></div><div class="story-steps"><button aria-label="Gå til Start" class="story-step" data-story-key="intro" data-target="intro-story" type="button"><span aria-hidden="true" class="story-dot"></span><span class="story-step-text">Start</span></button><button aria-label="Gå til Modul 1" class="story-step" data-story-key="m1" data-target="module1" type="button"><span aria-hidden="true" class="story-dot"></span><span class="story-step-text">Modul 1</span></button><button aria-label="Gå til Modul 2" class="story-step" data-story-key="m2" data-target="module2" type="button"><span aria-hidden="true" class="story-dot"></span><span class="story-step-text">Modul 2</span></button><button aria-label="Gå til Modul 3" class="story-step" data-story-key="m3" data-target="module3" type="button"><span aria-hidden="true" class="story-dot"></span><span class="story-step-text">Modul 3</span></button><button aria-label="Gå til Syntese" class="story-step" data-story-key="synth" data-target="finalBox" type="button"><span aria-hidden="true" class="story-dot"></span><span class="story-step-text">Syntese</span></button></div></nav></div>
+<section class="grid">
+<div class="card green story-reveal"><h2>Hva du skal kunne etterpå</h2><ul><li>Beskrive med egne ord hva den alternative byttedyrhypotesen går ut på.</li><li>Finne hovedmønstre i de utvalgte figurene og forklare hva de kan tyde på.</li><li>Gi eksempler på hvordan blåbærplanten kan knytte sammen smågnagere og skogsfugl.</li><li>Forklare hvorfor tidsforsinkelser, vær og snøforhold kan være viktige for bestandssvingningene.</li><li>Begrunne hvorfor én enkelt forklaring ikke er nok til å forstå hele systemet.</li></ul></div>
+<div class="card blue story-reveal"><h2>Slik arbeider du</h2><p>Arbeid deg gjennom modulene i rekkefølge. Hver studie introduseres med en kort faglig forklaring, og figuren fra studien kommer rett etter teksten. Les derfor fagtekst og figur som én sammenhengende enhet.</p><p>Under hver figur får du konkrete observasjonspunkter. Beskriv først hva dataene viser, og les deretter den faglige tolkningen.</p><p>Til slutt skriver du et eget resonnement. Først da åpnes det forventede svaret og neste modul.</p></div>
+</section>
+<section class="card"><h2>Tre typer forskningsgrunnlag du møter</h2><p>De sju figurene er plassert direkte under omtalen av studien de kommer fra. Dermed kan du først lese hypotesen, metoden og resultatet – og så umiddelbart kontrollere hvordan dette kommer til uttrykk i dataene.</p><div class="method-strip"><div class="story-reveal"><strong>Eksperimentell studie</strong>Ims et al. (2013) bruker kunstige reir og undersøker hvordan predasjonsrisiko varierer med smågnagertetthet. Det gir et sterkt grunnlag for å undersøke mekanismen, men kunstige reir er ikke det samme som naturlige fuglereir.</div><div class="story-reveal"><strong>Historiske tidsserier</strong>Selås (2006) og Hjeljord og Loe (2022) bruker jaktdata som bestandsindekser. De gir unik tidshorisont, men krever vurdering av jaktinnsats og andre historiske endringer.</div><div class="story-reveal"><strong>Langtidsovervåking</strong>Wegge et al. (2022) og Selås et al. (2021) følger flere økologiske variabler over tiår. De viser samvariasjon og tidsforsinkelser, men samvarierende forklaringsvariabler kan gi multikollinearitet, slik at effektene blir vanskelige å skille statistisk.</div></div></section><section class="module" data-story-section="m1" id="module1">
+<header class="module-header"><div class="chapter-kicker">Kapittel 1 av 3</div>
+<h2>Modul 1 · Ovenfra-og-ned-regulering, predasjon og den alternative byttedyrhypotesen (APH)</h2>
+<p>Start med den klassiske forklaringen – og test deretter hvor langt den faktisk rekker.</p>
+</header>
+<div class="module-body">
+<div class="parallax-frame parallax-wide"><img alt="Rype fotografert i naturlig miljø" class="module-photo parallax-image" loading="lazy" src="images_web/art_rype.webp"/></div><p class="photo-credit-wide">Foto: Bjørn Aksel Bjerke</p>
+<details open="">
+<summary>1. Fagstoff og nøkkelstudier · Fra gnagertopp til predasjonstrykk</summary>
+<div><p class="module-lead story-reveal">Skogsfugl og smågnagere har mange steder i Fennoskandia vist flerårige svingninger som delvis følger hverandre. Den klassiske forklaringen ovenfra og ned er den alternative byttedyrhypotesen (APH): Når smågnagerne er tallrike, konsentrerer generalistiske predatorer seg om dem. Når smågnagerbestandene faller, kan predasjonstrykket i større grad rettes mot alternative byttedyr, blant annet egg og kyllinger av skogsfugl.</p><div class="concept-grid story-reveal"><div class="concept-card"><h4>Funksjonell respons</h4><p>Predatorene endrer hva de spiser når tilgangen på ulike byttedyr endres. Etter en bestandsnedgang hos smågnagerne kan egg og kyllinger av skogsfugl bli relativt viktigere som alternative byttedyr.</p></div><div class="concept-card"><h4>Numerisk respons</h4><p>Et godt smågnagerår kan gi høyere overlevelse og reproduksjon hos predatorene. Derfor kan mange predatorer fortsatt være til stede etter at smågnagerbestanden har falt.</p></div><div class="concept-card"><h4>Buffereffekt</h4><p>I gode smågnagerår kan den store tilgangen på smågnagere redusere predatorenes predasjon på egg og kyllinger av skogsfugl.</p></div><div class="concept-card"><h4>Tidsforsinkelse</h4><p>Predatorbestandene reagerer ikke øyeblikkelig på endringer i byttedyrmengden. Derfor kan smågnagertettheten året før være mer informativ enn tettheten samme år.</p></div></div><div class="predator-photo-block"><h3>Generalistiske predatorer</h3><p>Rødrev og mår kan utnytte mange ulike byttedyr. Derfor kan endringer i smågnagerbestandene påvirke hvor mye predatorene tar egg og kyllinger av skogsfugl som alternative byttedyr.</p><div class="species-pair"><div class="species-card"><img alt="Rødrev fotografert i naturlig miljø" class="micro-parallax" loading="lazy" src="images_web/art_rodrev.webp"/><div class="species-meta"><span class="species-name">Rødrev</span><span class="photo-credit">Foto: Bjørn Aksel Bjerke</span></div></div><div class="species-card"><img alt="Mår fotografert i naturlig miljø" class="micro-parallax" loading="lazy" src="images_web/art_mar.webp"/><div class="species-meta"><span class="species-name">Mår</span><span class="photo-credit">Foto: Bjørn Aksel Bjerke</span></div></div></div></div><div class="source-callout story-reveal"><h4>Eksperimentelt holdepunkt: Ims et al. (2013)</h4><p>Studien fulgte en smågnagersyklus gjennom fire somre på 74 lokaliteter i Øst-Finnmark og brukte kunstige fuglereir som mål på relativ predasjonsrisiko.</p><p>Lemenforekomsten året før var en sterk forklaringsvariabel for predasjon på reir året etter, mens tundramus og gråsidemus ikke hadde tilsvarende forklaringskraft. Dette støtter en tidsforsinket mekanisme i den alternative byttedyrhypotesen og viser samtidig at ulike smågnagerarter kan ha forskjellige roller i næringsnettet.</p><p>Sporplatene ved de kunstige reirene viste at blant annet ravn og kråke var viktige reirpredatorer i deler av syklusen. Det blir derfor for snevert å tenke bare på rødrev når den alternative byttedyrhypotesen diskuteres.</p><p class="citation-line">Kilde: <a href="https://doi.org/10.1098/rsbl.2013.0802" rel="noopener" target="_blank">doi:10.1098/rsbl.2013.0802</a></p></div><p class="figure-transition story-reveal">Studer figuren som hører til denne studien:</p><div class="figure-box story-reveal"><strong>1 · Tidsforsinket reirpredasjon – Ims et al. (2013), figur 2</strong><p>Her er x-aksen avgjørende: Lemenforekomsten er målt året før predasjonen på reir registreres.</p><img alt="Omtegnet figur som viser forventet reirpredasjon i år t mot lemenmengde året før" class="study-image no-parallax" loading="lazy" src="images_web/modul1_ims2013_fig2.webp"/><div class="figure-reading"><h4>Se etter dette</h4><ul><li>Predasjonsrisikoen øker tydelig når lemenforekomsten i år t−1 øker.</li><li>Sammenhengen finnes i begge habitattypene, men formen og styrken er ulik.</li><li>Årene er markert separat. Se om både romlig og tidsmessig variasjon bidrar til mønsteret.</li></ul></div><div class="takeaway"><strong>Faglig poeng: </strong>Et smågnagertoppår kan gi en forsinket respons i predatorbestandene. Når smågnagerne senere går tilbake, kan mange predatorer fortsatt være til stede og øke predasjonstrykket på alternative byttedyr.</div><p class="image-caption">Omtegnet etter <a href="https://doi.org/10.1098/rsbl.2013.0802" rel="noopener" target="_blank">Ims et al. (2013), figur 2</a>. Biology Letters 9:20130802.</p></div><div class="caution story-reveal"><strong>Metodeforbehold: </strong>Kunstige reir måler variasjon i relativ predasjonsrisiko, ikke den eksakte predasjonsraten på naturlige skogsfuglreir. Studien er sterk på mekanisme og tidsforsinkelse, men bør ikke leses som en direkte måling av skogsfuglrekruttering.</div><div class="source-callout story-reveal"><h4>Et kritisk testtilfelle: Selås (2006)</h4><p>Selås (2006) brukte jaktdata fra Midt-Norge 1901–1924, en periode der rødrev var langt mindre tallrik enn i dag og mår nesten fraværende. Hvis predasjon alene skapte synkroniteten, burde andre bakkehekkende fugler med tilsvarende risiko for reirpredasjon følge gnagersyklusen.</p><div class="article-species"><div class="species-card"><img alt="Rugde fotografert i naturlig miljø" class="micro-parallax" loading="lazy" src="images_web/art_rugde.webp"/><div class="species-meta"><span class="species-name">Rugde</span><span class="photo-credit">Foto: Bjørn Aksel Bjerke</span></div></div></div><p>Lirype og storfugl var positivt knyttet til smågnagerårene, men rugde var ikke det. Rugde lever i samme landskap og hekker på bakken, men spiser hovedsakelig meitemark og andre dyr – ikke plantene som gnagere og skogsfugl er knyttet til.</p><p>Resultatet betyr ikke at predasjon er uviktig. Det betyr at APH alene ikke forklarer hele mønsteret, og åpner for at en felles ressurs- eller matkvalitetsmekanisme kan ligge under synkroniteten.</p><p class="citation-line">Kilde: <a href="https://doi.org/10.1111/j.1474-919X.2006.00566.x" rel="noopener" target="_blank">doi:10.1111/j.1474-919X.2006.00566.x</a></p></div><p class="figure-transition story-reveal">Studer figuren som hører til denne studien:</p><div class="figure-box story-reveal"><strong>2 · En utfordring til APH – Selås (2006), figur 1</strong><p>Dette er et sammenlignende «kontrollspørsmål» fra historiske data.</p><img alt="Omtegnet historisk jaktserie for rugde, storfugl og lirype med smågnagerår" class="study-image no-parallax" loading="lazy" src="images_web/modul1_selas2006_fig1.webp"/><div class="figure-reading"><h4>Se etter dette</h4><ul><li>De oransje markeringene viser år med mye smågnagere.</li><li>Storfugl og lirype følger smågnagerårene tydeligere enn rugde.</li><li>Rugde er også bakkehekkende, men har en annen diett. Hva gjør det med den rene predasjonsforklaringen?</li></ul></div><div class="takeaway"><strong>Faglig poeng: </strong>Hvis lik reirplassering ikke gir lik synkronitet, må vi lete etter egenskaper som skiller artene – særlig næringsgrunnlag. Predasjon kan fortsatt forsterke svingningene.</div><p class="image-caption">Omtegnet etter <a href="https://doi.org/10.1111/j.1474-919X.2006.00566.x" rel="noopener" target="_blank">Selås (2006), figur 1</a>. Ibis 148:678–686.</p></div><div class="source-callout story-reveal"><h4>41 år med skogsfugl: Wegge, Moss og Rolstad (2022)</h4><p>I Varaldskogen ble storfugl og orrfugl fulgt fra 1979 til 2019. Hekkesuksessen ble delt i to komponenter: hvor stor andel av hunnfuglene som hadde kull (kullfrekvens), og hvor mange kyllinger det var i kullene (kullstørrelse).</p><p>De to komponentene samvarierte ikke og reagerte ulikt på miljøfaktorer. Studien fant støtte både for predasjonsstyrte og ressursstyrte mekanismer. Smågnagertetthet og rødrev var relevante i predasjonshypotesene, mens mengden insektlarver og blåbærproduksjonen var viktige ressursvariabler.</p><p>Når flere forklaringsvariabler samvarierer sterkt, kan det oppstå multikollinearitet. Da blir det vanskelig å skille de statistiske effektene fra hverandre. Det er et sentralt poeng i denne læringsstien: Blåbær kan være knyttet til skogsfugl gjennom ressursgrunnlaget, men også indirekte via klatremus, som igjen kan påvirke predasjonen på egg og kyllinger.</p><p class="citation-line">Kilde: <a href="https://doi.org/10.1002/ece3.9327" rel="noopener" target="_blank">doi:10.1002/ece3.9327</a></p></div><p class="figure-transition story-reveal">Studer figuren som hører til denne studien:</p><div class="figure-box story-reveal"><strong>3 · Reproduksjon består av flere prosesser – Wegge et al. (2022), figur 1</strong><p>Ikke se bare på «hekkesuksess». Del den opp i mekanismer.</p><img alt="Omtegnet 41-årig tidsserie for hekkesuksess, kullfrekvens, kullstørrelse og temperaturindeksen for den nordlige halvkule" class="study-image no-parallax" loading="lazy" src="images_web/modul1_wegge2022_fig1.webp"/><div class="figure-reading"><h4>Se etter dette</h4><ul><li>Sammenlign panel b og c: toppene i kullfrekvens og kullstørrelse faller ikke konsekvent sammen.</li><li>Storfugl og orrfugl viser både likheter og artsforskjeller.</li><li>Panel d viser en langsiktig temperaturtrend som forskerne kontrollerte for – ikke en enkel forklaring på hvert enkelt topp- og bunnår.</li></ul></div><div class="takeaway"><strong>Faglig poeng: </strong>Samlet hekkesuksess kan skjule at ulike delprosesser styres av ulike faktorer. Det er nettopp derfor én enkelt «hovedårsak» ofte blir for enkel.</div><p class="image-caption">Omtegnet etter <a href="https://doi.org/10.1002/ece3.9327" rel="noopener" target="_blank">Wegge, Moss og Rolstad (2022), figur 1</a>. Ecology and Evolution 12:e9327.</p></div><div class="evidence-note story-reveal"><strong>Forskerblikk: </strong>Når flere forklaringsvariabler samvarierer, kan statistiske modeller ha problemer med å skille effektene fra hverandre. Derfor er det nyttig å kombinere eksperimenter, historiske sammenligninger og langtidsovervåking.</div></div>
+</details>
+<div class="module-end-marker story-reveal">Avslutt modul 1</div><section class="reflection story-reveal">
+<h3>Refleksjon og selvevaluering</h3>
+<p><strong>Spørsmål: </strong>Bruk de tre nøkkelfigurene til å forklare hvorfor APH er en viktig mekanisme, men ikke en tilstrekkelig forklaring på alle synkrone svingninger hos smågnagere og skogsfugl. Ta med minst ett funn som støtter APH og ett funn som utfordrer en ren predasjonsforklaring.</p>
+<textarea aria-label="Svar på refleksjon i modul 1" id="answer1" placeholder="Skriv ditt faglige resonnement her …"></textarea>
+<div class="counter" id="count1">0 tegn · skriv minst 40 tegn for å åpne forventet svar</div>
+<button class="btn" disabled="" id="reveal1" type="button">Se forventet svar</button>
+<div class="answer" id="model1">
+<h4>Forventet svar</h4>
+<p>Ims et al. (2013) viser en tydelig tidsforsinket sammenheng mellom lemenforekomst året før og reirpredasjon året etter, noe som støtter den alternative byttedyrhypotesen. Selås (2006) viser samtidig at rugde ikke følger smågnagersvingningene slik lirype og storfugl gjør, selv om rugde også hekker på bakken og predatorbestandene var lave i studieperioden. Wegge et al. (2022) viser videre at skogsfuglreproduksjonen består av flere delprosesser som påvirkes av predasjon, smågnagere, insektlarver, blåbær og vær. En rimelig konklusjon er derfor at predasjon kan bidra til og forsterke syklusene, men at ressursstyrte mekanismer også må vurderes.</p>
+</div>
+<div class="complete-row">
+<button class="btn" disabled="" id="complete1" type="button">Fullfør modul 1</button>
+<span class="status" id="status1">Skriv svar og åpne forventet svar først.</span>
+</div>
+</section>
+</div>
+</section><section aria-hidden="true" class="story-transition" id="transition1"><div class="story-transition-inner"><div class="transition-label">Videre i læringsstien</div><h2>Predasjon forklarer mye – men ikke alt.</h2><p>Hvis smågnagere og skogsfugl delvis svinger sammen uten at predasjon alene kan forklare mønsteret, må vi se nedover i næringsnettet. Hva om flere arter responderer på den samme ressursen?</p><div aria-hidden="true" class="transition-arrow">↓</div></div></section>
+<section class="module locked" data-story-section="m2" id="module2">
+<header class="module-header"><div class="chapter-kicker">Kapittel 2 av 3</div>
+<h2>Modul 2 · Nedenfra-og-opp-regulering, blåbær og plantekvalitet</h2>
+<p>Hva om smågnagere og skogsfugl svinger sammen fordi de påvirkes av den samme ressursen nedenfra?</p>
+</header>
+<div class="lock-note" id="lock2">🔒 Fullfør modul 1 for å åpne denne modulen.</div>
+<div class="module-body">
+<details open="">
+<summary>1. Fagstoff og nøkkelstudier · Fra blåbærår til dyrerespons</summary>
+<div><p class="module-lead story-reveal">Nedenfra-og-opp-regulering betyr at endringer i ressursene nederst i næringsnettet kan forplante seg oppover. Blåbærplanten er interessant fordi ulike deler av planten kan ha ulike roller for forskjellige arter. Det er derfor viktig å skille mellom selve bærene og frøene, de grønne skuddene og bladene, og insektlarvene som lever på blåbærplanten.</p><div class="concept-grid story-reveal"><div><h4>Bær- og frøår</h4><p>År med høy bærproduksjon viser at blåbærplanten har investert mye i reproduksjon. I studiene brukes bærindeksen først og fremst som et mål på slike år – ikke som bevis på at selve bærene er årsaken til neste års bestandstopp.</p></div><div><h4>Grønne skudd og blader</h4><p>Klatremus lever i stor grad av blåbærskudd om vinteren. For voksne skogsfuglhunner kan tilgang til grønt plantemateriale om våren være relevant før egglegging. Hva som skjer med matkvaliteten i skuddene etter et godt bær- og frøår, er fortsatt ikke fullt avklart.</p></div><div><h4>Insektlarver</h4><p>Skogsfuglkyllinger trenger proteinrik animalsk føde de første ukene. Insektlarver er derfor en viktig matkilde. Wegge et al. (2022) fant en tydelig sammenheng mellom larvemengde og hekkesuksess.</p></div><div><h4>Tidsforsinkelse</h4><p>Klatremusbestandene topper ofte omtrent ett år etter høy blåbærproduksjon. Tidsforsinkelsen tyder på at sammenhengen ikke bare handler om at dyrene spiser bærene når de er modne.</p></div></div><div class="blueberry-focus story-reveal"><div class="parallax-frame parallax-blueberry"><img alt="Blåbærplante med grønne skudd, blader og bær" class="parallax-image" loading="lazy" src="images_web/blabaar.webp"/></div><p class="photo-credit-wide">Blåbær (Vaccinium myrtillus). Foto: Bjørn Aksel Bjerke</p><div class="evidence-note story-reveal"><h4>Hva på blåbærplanten er viktigst?</h4><p>Svaret avhenger av hvilken art og hvilken livsfase vi ser på. For klatremus er de grønne skuddene viktige som vintermat. For voksne skogsfuglhunner kan grønt plantemateriale være relevant før egglegging. For nyklekte skogsfuglkyllinger er derimot insektlarver en særlig viktig matkilde. Bærproduksjonen er samtidig nyttig som indeks for gode bær- og frøår, men selve bærene skal ikke automatisk tolkes som den direkte årsaken til bestandsendringene.</p></div></div><div class="source-callout story-reveal"><h4>Storfugl og blåbær: Selås (2000)</h4><p>Selås (2000) analyserte historiske data fra Vegårshei for periodene 1953–1962 og 1969–1978. Studien undersøkte om kullstørrelse og bestandsmål hos storfugl hang sammen med blåbærproduksjonen året før, snøforholdene om våren og høstbestanden året før.</p><p>Kullstørrelsen var størst i år med tidlig snøsmelting; effekten var statistisk tydelig i perioden 1969–1978. I samme periode var kullstørrelsen også positivt knyttet til blåbærindeksen året før og negativt knyttet til høstbestanden året før.</p><p>Selås (2000) konkluderte ikke med at den alternative byttedyrhypotesen kunne avvises, men at den alene ikke var nok. Matkvalitet og ressursforhold måtte også vurderes som mulige bidrag.</p><p class="citation-line">Kilde: <a href="https://doi.org/10.2981/wlb.2000.032" rel="noopener" target="_blank">doi:10.2981/wlb.2000.032</a></p></div><p class="figure-transition story-reveal">Studer figuren som hører til denne studien:</p><div class="figure-box story-reveal"><strong>4 · Blåbær, vår og kullstørrelse – Selås (2000), figur 4</strong><p>Figuren sammenligner to historiske perioder og skiller år med tidlig og sen snøsmelting.</p><img alt="Omtegnet figur for storfuglkull, blåbærindeks og høstbestand med tidlig og sen snøsmelting" class="study-image no-parallax" loading="lazy" src="images_web/modul2_selas2000_fig4.webp"/><div class="figure-reading"><h4>Se etter dette</h4><ul><li>Øverste rad: se om kullstørrelsen øker med blåbærindeksen året før.</li><li>Fylte punkter er år med tidlig snøsmelting; åpne punkter er sen snøsmelting.</li><li>Nederste rad viser at høstbestanden året før også kan ha betydning – altså at flere prosesser virker samtidig.</li></ul></div><div class="takeaway"><strong>Faglig poeng: </strong>Et godt ressursår handler ikke bare om mengden mat. Tidspunktet for tilgang på vårføde, blåbærproduksjonen året før og bestandstettheten kan sammen påvirke hvor mye en storfuglhøne kan investere i reproduksjon.</div><p class="image-caption">Omtegnet etter <a href="https://doi.org/10.2981/wlb.2000.032" rel="noopener" target="_blank">Selås (2000), figur 4</a>. Wildlife Biology 6:1–11.</p></div><div class="caution story-reveal"><strong>Viktig presisering: </strong>Figuren viser økologiske sammenhenger i observasjonsdata. Den måler ikke direkte blåbærlyngens kjemiske forsvar eller fordøyelighet og næringsinnhold i de grønne skuddene. Plantekjemi er derfor en foreslått mekanisme, ikke noe denne figuren alene beviser.</div><div class="source-callout story-reveal"><h4>Blåbær og klatremus over et stort område: Selås et al. (2021)</h4><p>Selås et al. (2021) sammenlignet omtrent fire tiår med tidsserier for klatremusbestander og blåbærproduksjon fra Agder, Varaldskogen og Vangsåsen. Områdene ligger så langt fra hverandre at spredning alene vanskelig kan forklare samtidige bestandstopper.</p><p>Med noen unntak kom bestandstoppene hos klatremus omtrent ett år etter år med høy blåbærproduksjon. Når blåbærseriene var ute av fase mellom områdene, var klatremusbestandene ofte også ute av fase. I den siste delen av studieperioden ble den romlige synkroniteten tydeligere.</p><p>Selås et al. (2021) viste dermed at variasjon i blåbærproduksjonen kunne forklare mye av den romlige og tidsmessige synkroniteten hos klatremus. Samtidig understreket forfatterne at vær og andre ressurser også kan påvirke bestandene.</p><p class="citation-line">Kilde: <a href="https://doi.org/10.1111/1440-1703.12204" rel="noopener" target="_blank">doi:10.1111/1440-1703.12204</a></p></div><p class="figure-transition story-reveal">Studer figuren som hører til denne studien:</p><div class="figure-box story-reveal"><strong>5 · Blåbær og klatremus i tre områder – Selås et al. (2021), figur 2</strong><p>Her er det viktigere å se på tidspunktet for toppene enn å sammenligne hvor høye indeksverdiene er.</p><img alt="Omtegnet tidsserie for klatremus og blåbær i Agder, Varaldskogen og Vangsåsen" class="study-image no-parallax" loading="lazy" src="images_web/modul2_selas2021_fig2.webp"/><div class="figure-reading"><h4>Se etter dette</h4><ul><li>Finn store blåbærtopper og se hva som skjer med klatremus året etter.</li><li>Sammenlign om toppene kommer samtidig i Agder, Varaldskogen og Vangsåsen.</li><li>Legg merke til unntakene. En god hypotese skal også kunne diskutere år som ikke passer perfekt.</li></ul></div><div class="takeaway"><strong>Faglig poeng: </strong>Synkronitet kan oppstå fordi en felles ressurs varierer i takt over store områder. Samtidig viser avvikene at blåbær ikke er den eneste driveren.</div><p class="image-caption">Omtegnet etter <a href="https://doi.org/10.1111/1440-1703.12204" rel="noopener" target="_blank">Selås et al. (2021), figur 2</a>. Ecological Research 36:409–419.</p></div><div class="evidence-note story-reveal"><strong>Hvorfor er dette viktig for skogsfugl? </strong>Hvis de samme årene med høy blåbærproduksjon påvirker både klatremus og skogsfugl, kan bestandene bli synkronisert uten at predasjon er den opprinnelige årsaken. Predasjon kan deretter forsterke eller dempe en synkronitet som allerede er skapt gjennom ressursgrunnlaget.</div><div class="bridge story-reveal"><h4>Bro til modul 3</h4><p>Men hvorfor blir bær- og frøår, plantekvalitet og dyrebestander synkrone over store områder? Da må vi løfte blikket fra næringsnettet til vær, temperatur og andre storskala miljøsignaler.</p></div></div>
+</details>
+<div class="module-end-marker story-reveal">Avslutt modul 2</div><section class="reflection story-reveal">
+<h3>Refleksjon og selvevaluering</h3>
+<p><strong>Spørsmål:</strong> Forklar hvordan blåbærplanten kan være viktig for både klatremus og skogsfugl. Skill mellom bærene/frøene, de grønne skuddene og bladene, og insektlarvene. Ta også med hvorfor en tidsforsinkelse på omtrent ett år er interessant.</p>
+<textarea aria-label="Svar på refleksjon i modul 2" id="answer2" placeholder="Skriv ditt faglige resonnement her …"></textarea>
+<div class="counter" id="count2">0 tegn · skriv minst 40 tegn for å åpne forventet svar</div>
+<button class="btn" disabled="" id="reveal2" type="button">Se forventet svar</button>
+<div class="answer" id="model2">
+<h4>Forventet svar</h4>
+<p>Blåbærplanten kan påvirke ulike arter på ulike måter. Klatremus bruker særlig blåbærskudd som vintermat, og bestandstoppene kommer ofte omtrent ett år etter høy blåbærproduksjon. Hos voksne skogsfuglhunner kan tilgang til grønne plantedeler før egglegging være relevant, mens skogsfuglkyllinger i stor grad er avhengige av insektlarver som animalsk føde. I disse analysene fungerer bærproduksjonen først og fremst som en indikator på et godt bær- og frøår; vi kan ikke konkludere med at selve bærene driver neste års bestandstopp. Den nøyaktige fysiologiske koblingen mellom et bær- og frøår og matkvaliteten i de grønne skuddene er fortsatt usikker.</p>
+</div>
+<div class="complete-row">
+<button class="btn" disabled="" id="complete2" type="button">Fullfør modul 2</button>
+<span class="status" id="status2">Skriv svar og åpne forventet svar først.</span>
+</div>
+</section>
+</div>
+</section><section aria-hidden="true" class="story-transition" id="transition2"><div class="story-transition-inner"><div class="transition-label">Videre i læringsstien</div><h2>Neste spørsmål: Hva synkroniserer ressursene?</h2><p>Hvis blåbærproduksjon kan henge sammen med både klatremus og skogsfugl, oppstår et nytt spørsmål: Hvorfor varierer blåbær og andre ressurser samtidig over store områder?</p><div aria-hidden="true" class="transition-arrow">↓</div></div></section>
+<section class="module locked" data-story-section="m3" id="module3">
+<header class="module-header"><div class="chapter-kicker">Kapittel 3 av 3</div>
+<h2>Modul 3 · Klima, storskala signaler og syntese</h2>
+<p>Hvordan kan miljøet synkronisere prosessene – og hvorfor endrer selve syklusene seg gjennom historien?</p>
+</header>
+<div class="lock-note" id="lock3">🔒 Fullfør modul 2 for å åpne denne modulen.</div>
+<div class="module-body">
+<details open="">
+<summary>1. Fagstoff og nøkkelstudier · Direkte og indirekte miljøeffekter</summary>
+<div><p class="module-lead story-reveal">Når bestander hundrevis av kilometer fra hverandre svinger samtidig, må vi spørre om det finnes drivere som virker over store områder. Vær og klima kan påvirke dyr direkte, men også indirekte ved å styre planter, insektføde og fenologi, altså tidspunktet for sesongavhengige biologiske hendelser.</p><div class="concept-grid story-reveal"><div class="concept-card"><h4>Direkte effekt</h4><p>Temperatur under og etter klekking kan påvirke kyllingenes varmetap, aktivitet og overlevelse samme år.</p></div><div class="concept-card"><h4>Indirekte effekt</h4><p>Vær kan påvirke blomstring, bærproduksjon eller plantekvalitet, som senere påvirker smågnagere og fugl.</p></div><div class="concept-card"><h4>Romlig synkronitet</h4><p>Romlig korrelerte miljøvariasjoner kan synkronisere bestandsdynamikken mellom geografisk adskilte bestander. Dette kalles Moran-effekten.</p></div><div class="concept-card"><h4>Tidsforsinkelse</h4><p>Et miljøsignal kan virke via planter og deretter dyr. Da kan effekten komme ett eller flere år etter selve signalet.</p></div></div><div class="source-callout story-reveal"><h4>Flere kandidater samtidig: Selås (2019)</h4><p>Studien analyserte årlige endringer i jaktindekser for storfugl og orrfugl i Aust-Agder 1999–2017. I modellene var høy junitemperatur samme år positivt knyttet til bestandsendringen, noe som er forenlig med bedre kyllingoverlevelse i varmt vær.</p><p>Bestandsendringen var også positivt knyttet til blåbærproduksjonen året før. I modeller med flere forklaringsvariabler hadde temperaturen i de to foregående somrene en negativ sammenheng med bestandsendringen. Dette ble tolket som en mulig indirekte effekt gjennom matkvalitet.</p><p>Artikkelen fant dessuten en statistisk sammenheng med en indeks for den 9,3-årige nodale månefasesyklusen med omtrent to års tidsforsinkelse. Forfatteren foreslår en mulig vei via geomagnetisme, kosmisk stråling og plantefysiologi, men studien måler ikke denne mekanismen direkte. Den delen skal derfor behandles som en hypotese, ikke som etablert årsak.</p><p class="citation-line">Kilde: <a href="https://doi.org/10.2981/wlb.00536" rel="noopener" target="_blank">doi:10.2981/wlb.00536</a></p></div><p class="figure-transition story-reveal">Studer figuren som hører til denne studien:</p><div class="figure-box story-reveal"><strong>6 · Flere signaler i samme tidsrom – Selås (2019), figur 1</strong><p>Bruk denne figuren som en øvelse i å skille mønster fra mekanisme.</p><img alt="Omtegnet figur med storfugljakt, blåbærindeks, junitemperatur og månenodal indeks 1999–2017" class="study-image no-parallax" loading="lazy" src="images_web/modul3_selas2019_fig1.webp"/><div class="figure-reading"><h4>Se etter dette</h4><ul><li>Panel a: jaktindekser for skogsfugl varierer betydelig mellom år.</li><li>Panel b: sammenlign blåbærtoppene med endringer i fugleindeksene året etter.</li><li>Panel c: temperatur og indeks for den nodale månefasesyklusen er storskala forklaringsvariabler – men de representerer svært forskjellige foreslåtte mekanismer.</li><li>Ikke let etter perfekt samsvar i hvert år. Spør heller hvilke tidsforsinkelser og kombinasjoner som ble testet statistisk.</li></ul></div><div class="takeaway"><strong>Faglig poeng: </strong>Figuren viser hvordan samtidige tidsserier kan brukes til å utvikle hypoteser. En direkte temperatureffekt på kyllinger har en kort og biologisk nærliggende årsakskjede, mens en foreslått kjede fra månenodal syklus via kosmisk stråling til plantefysiologi er langt mer indirekte og krever sterkere mekanistisk dokumentasjon.</div><p class="image-caption">Omtegnet etter <a href="https://doi.org/10.2981/wlb.00536" rel="noopener" target="_blank">Selås (2019), figur 1</a>. Wildlife Biology 2019:wlb.00536.</p></div><div class="caution story-reveal"><strong>Kausalitet vs. korrelasjon: </strong>At to tidsserier følger hverandre – selv med en biologisk plausibel tidsforsinkelse – er ikke i seg selv bevis for årsak. Jo lengre årsakskjede som foreslås, desto viktigere er uavhengige mekanistiske tester.</div><div class="source-callout story-reveal"><h4>142 år med lirype: Hjeljord og Loe (2022)</h4><p>Forfatterne sammenstilte en 142 år lang tidsserie for fangst per innsatsenhet (CPUE, catch per unit effort), her målt som antall felte liryper per jeger per dag. Serien falt fra omtrent 35 felte liryper per jeger per dag i de tidligste årene til rundt to i de siste årene.</p><p>Waveletanalysen viste tre tydelige tidsavsnitt: 1872–1900 med klare 3–5-årssykluser, 1901–1916 med fortsatt sterk, men mer variabel syklisitet, og 1917–2013 med lave bestandstopper og langt svakere regelmessige svingninger.</p><p>År med smågnagertopper hadde sterk sammenheng med fangstindeksen, men denne sammenhengen var langt svakere i den siste perioden. NAO-indeksen for våren og forsommeren hadde en positiv sammenheng med fangstindeksen, men værvariabler med langsiktig trend forklarte ikke den langvarige nedgangen. Forfatterne fant derfor ikke støtte for at klimaendring alene var årsaken til den historiske nedgangen.</p><p>Forfatterne foreslår i stedet at svakere smågnagertopper, kombinert med en større rødrevbestand, kan ha redusert buffereffekten og bidratt til en predasjonsfelle («predator pit»). Samtidig peker de på et viktig problem: Rødrevbestanden var trolig lav under deler av den tidlige nedgangen. Dette er et godt eksempel på at en samlet forklaring kan være biologisk plausibel uten å være endelig dokumentert.</p><p class="citation-line">Kilde: <a href="https://doi.org/10.1002/wlb3.01058" rel="noopener" target="_blank">doi:10.1002/wlb3.01058</a></p></div><p class="figure-transition story-reveal">Studer figuren som hører til denne studien:</p><div class="figure-box story-reveal"><strong>7 · Når syklusene selv endrer seg – Hjeljord og Loe (2022), figur 1</strong><p>Les panel A og B sammen. Den ene viser nivået i bestanden, den andre viser strukturen i svingningene.</p><img alt="Omtegnet 142-årig tidsserie for lirypefangst per jeger per dag og bølgeanalyse av syklisitet" class="study-image no-parallax" loading="lazy" src="images_web/modul3_hjeljord_loe2022_fig1.webp"/><div class="figure-reading"><h4>Se etter dette</h4><ul><li>Panel A: Legg merke til både nedgangen i fangstindeksen (CPUE) og at de store bestandstoppene forsvinner.</li><li>Røde stjerner markerer år med smågnagertopper. Sammenhengen er mest tydelig i den tidlige delen av serien.</li><li>Panel B: røde/oransje felt viser perioder med sterk sterkt syklisk signal i waveletanalysen. De tydelige 3–5-årssyklusene svekkes kraftig etter begynnelsen av 1900-tallet.</li><li>Waveletanalysen gjør det mulig å se at lengden og styrken på de regelmessige svingningene endres over tid – noe et enkelt gjennomsnitt eller en lineær trend ikke viser.</li></ul></div><div class="takeaway"><strong>Faglig poeng: </strong>Bestandsdynamikk er ikke en fast egenskap ved en art. Både nivået og selve rytmen i svingningene kan endres når næringsnett, predatorer og miljøforhold endres.</div><p class="image-caption">Omtegnet etter <a href="https://doi.org/10.1002/wlb3.01058" rel="noopener" target="_blank">Hjeljord og Loe (2022), figur 1</a>. Wildlife Biology 2022:e01058.</p></div><div class="evidence-note story-reveal"><strong>Skiftende grunnlinje (shifting baseline):</strong>Når hver generasjon bruker bestandstilstanden fra sin egen samtid som mål på hva som er «normalt», kan en langsom historisk nedgang bli undervurdert. Den 142 år lange tidsserien viser hvorfor lange dataserier er avgjørende i økologi og naturforvaltning.</div><div class="bridge story-reveal"><h4>Syntesen</h4><p>Den røde tråden er nå: Miljøforhold som virker over store områder kan synkronisere planteproduksjon → plantene kan påvirke smågnagere og skogsfugl → smågnagerne kan samtidig påvirke predatorenes byttevalg. Predasjonsstyrte og ressursstyrte mekanismer er derfor ikke nødvendigvis konkurrerende forklaringer; de kan være koblede ledd i det samme dynamiske systemet.</p></div></div>
+</details>
+<div class="module-end-marker story-reveal">Avslutt modul 3</div><section class="reflection story-reveal">
+<h3>Refleksjon og selvevaluering</h3>
+<p><strong>Spørsmål: </strong>Lag en samlet forklaring på bestandssvingningene i den boreale skogen. Modellen din skal inneholde minst én ovenfra-og-ned-mekanisme, én nedenfra-og-opp-mekanisme og én abiotisk/storskala driver. Marker også én kobling som er godt støttet av de viste dataene, og én kobling som fortsatt bør behandles som hypotese.</p>
+<textarea aria-label="Svar på refleksjon i modul 3" id="answer3" placeholder="Skriv ditt faglige resonnement her …"></textarea>
+<div class="counter" id="count3">0 tegn · skriv minst 40 tegn for å åpne forventet svar</div>
+<button class="btn" disabled="" id="reveal3" type="button">Se forventet svar</button>
+<div class="answer" id="model3">
+<h4>Forventet svar</h4>
+<p>En integrert modell kan starte med storskala vær som påvirker blåbærproduksjon og andre ressurser. Blåbær kan igjen påvirke klatremus med omtrent ett års tidsforsinkelse og skogsfugl gjennom næring og kondisjon. Når smågnagerne topper og deretter kollapser, kan predatorenes numeriske og funksjonelle responser øke predasjonen på fuglereir og kyllinger. Ims et al. (2013) gir sterk støtte til en tidsforsinket lemen–predasjonskobling, og Selås et al. (2021) gir støtte til blåbær–klatremus-koblingen. Derimot er den foreslåtte fysiologiske kjeden fra den nodale månefasesyklusen via kosmisk stråling til plantekvalitet ikke direkte testet i Selås (2019) og bør regnes som en hypotese. Hjeljord og Loe (2022) viser dessuten at både amplituden og syklisiteten har endret seg over 142 år, slik at styrken på mekanismene ikke er konstant over tid.</p>
+</div>
+<div class="complete-row">
+<button class="btn" disabled="" id="complete3" type="button">Fullfør læringsstien</button>
+<span class="status" id="status3">Skriv svar og åpne forventet svar først.</span>
+</div>
+</section>
+</div>
+</section>
+<section class="footer-note" data-story-section="synth" id="finalBox" style="display:none">
+<h3>✓ Læringsstien er fullført – hva bør du sitte igjen med?</h3>
+<p>Bestandssvingninger i boreal skog kan ikke reduseres til én årsak. Predasjon kan forsterke syklusene, ressurser som blåbær kan skape felles ressursdrevne signaler, og vær kan synkronisere prosesser direkte eller gjennom plantene. Samtidig viser de lange tidsseriene at styrken i koblingene kan endre seg over tid. En god økologisk forklaring må derfor beskrive mekanismer på flere nivåer og være tydelig på hva dataene faktisk viser – og hva som fortsatt er en hypotese.</p>
+</section>
+<section class="refs"><h2 class="story-reveal">Kjerneartikler brukt i læringsstien</h2><p class="intro story-reveal">Fagteksten og figurlesingen over er bygget på disse sju artiklene. Åpne DOI-lenken dersom du vil lese originalstudien.</p><div class="source-list"><div class="source-card"><p class="citation"><strong>Ims, R. A., Henden, J.-A., Thingnes, A. V., &amp; Killengreen, S. T. (2013).</strong> Indirect food web interactions mediated by predator–rodent dynamics: relative roles of lemmings and voles. Biology Letters, 9(5), 20130802. <a href="https://doi.org/10.1098/rsbl.2013.0802" rel="noopener" target="_blank">https://doi.org/10.1098/rsbl.2013.0802</a></p><p class="relevance"><strong>I læringsstien: </strong>Eksperimentell støtte for en tidsforsinket mekanisme i den alternative byttedyrhypotesen; lemen hadde større forklaringskraft enn tundramus og gråsidemus.</p></div><div class="source-card"><p class="citation"><strong>Selås, V. (2006).</strong> Patterns in grouse and Woodcock Scolopax rusticola hunting yields from central Norway 1901–24 do not support the alternative prey hypothesis for grouse cycles. Ibis, 148(4), 678–686. <a href="https://doi.org/10.1111/j.1474-919X.2006.00566.x" rel="noopener" target="_blank">https://doi.org/10.1111/j.1474-919X.2006.00566.x</a></p><p class="relevance"><strong>I læringsstien: </strong>Historisk test som utfordrer APH som eneste forklaring og peker mot felles ressursstyrte mekanismer.</p></div><div class="source-card"><p class="citation"><strong>Wegge, P., Moss, R., &amp; Rolstad, J. (2022).</strong> Annual variation in breeding success in boreal forest grouse: Four decades of monitoring reveals bottom-up drivers to be more important than predation. Ecology and Evolution, 12(10), e9327. <a href="https://doi.org/10.1002/ece3.9327" rel="noopener" target="_blank">https://doi.org/10.1002/ece3.9327</a></p><p class="relevance"><strong>I læringsstien: </strong>41 års overvåking som viser at predasjonsstyrte og ressursstyrte mekanismer virker samtidig, og at ulike deler av reproduksjonen har forskjellige drivere.</p></div><div class="source-card"><p class="citation"><strong>Selås, V. (2000).</strong> Population dynamics of capercaillie Tetrao urogallus in relation to bilberry Vaccinium myrtillus production in southern Norway. Wildlife Biology, 6(1), 1–11. <a href="https://doi.org/10.2981/wlb.2000.032" rel="noopener" target="_blank">https://doi.org/10.2981/wlb.2000.032</a></p><p class="relevance"><strong>I læringsstien: </strong>Kobler blåbærproduksjon og vårforhold til storfuglens reproduksjon og introduserer matkvalitet som supplerende mekanisme.</p></div><div class="source-card"><p class="citation"><strong>Selås, V., Framstad, E., Rolstad, J., Sonerud, G. A., Spidsø, T. K., &amp; Wegge, P. (2021).</strong> Bilberry seed production explains spatiotemporal synchronicity in bank vole population fluctuations in Norway. Ecological Research, 36(3), 409–419. <a href="https://doi.org/10.1111/1440-1703.12204" rel="noopener" target="_blank">https://doi.org/10.1111/1440-1703.12204</a></p><p class="relevance"><strong>I læringsstien: </strong>Viser at romlig synkronitet hos klatremus i stor grad følger synkronitet i blåbærproduksjonen med omtrent ett års tidsforsinkelse.</p></div><div class="source-card"><p class="citation"><strong>Selås, V. (2019).</strong> Annual change in forest grouse in southern Norway: variation explained by temperatures, bilberry seed production and the lunar nodal phase cycle. Wildlife Biology, 2019(1), wlb.00536. <a href="https://doi.org/10.2981/wlb.00536" rel="noopener" target="_blank">https://doi.org/10.2981/wlb.00536</a></p><p class="relevance"><strong>I læringsstien: </strong>Tester flere forklaringsvariabler som virker over store områder, sammen med ressursstyrte mekanismer; viktig som øvelse i å skille statistisk sammenheng fra etablert mekanisme.</p></div><div class="source-card"><p class="citation"><strong>Hjeljord, O., &amp; Loe, L. E. (2022).</strong> The roles of climate and alternative prey in explaining 142 years of declining willow ptarmigan hunting yield. Wildlife Biology, 2022(6), e01058. <a href="https://doi.org/10.1002/wlb3.01058" rel="noopener" target="_blank">https://doi.org/10.1002/wlb3.01058</a></p><p class="relevance"><strong>I læringsstien: </strong>142-årsserie som viser både langsiktig nedgang og en dramatisk svekkelse av den tidligere 3–5-årige syklisiteten.</p></div></div></section><section class="credits story-reveal"><h2>Om læringsstien</h2><ul><li><strong>Laget av: </strong>Ronny Steen</li><li><strong>Fagstoff prosessert i: </strong>NotebookLM</li><li><strong>Skyggekoding av skript: </strong>ChatGPT</li><li><strong>Modifikasjon og oversettelse av figurer ved hjelp av: </strong>ChatGPT</li><li><strong>Kvalitetssikret av: </strong>Ronny Steen</li><li><strong>Arts- og plantefoto: </strong>Bjørn Aksel Bjerke</li><li><strong>Takk til: </strong>Olav Hjeljord og Vidar Selås</li></ul></section>
+</main>
+<script>
+(function(){
+  const MIN = 40;
+  const state = JSON.parse(localStorage.getItem('borealLearningPath') || '{}');
+
+  function save(){
+    localStorage.setItem('borealLearningPath', JSON.stringify(state));
+  }
+
+  function unlockModule(n){
+    const module = document.getElementById('module'+n);
+    const lock = document.getElementById('lock'+n);
+    if(module){
+      module.classList.remove('locked');
+      if(lock) lock.style.display='none';
+    }
+  }
+
+  function updateProgress(){
+    let completed = 0;
+    if(state.completed1) completed++;
+    if(state.completed2) completed++;
+    if(state.completed3) completed++;
+    const current = completed >= 3 ? 3 : completed + 1;
+    document.getElementById('progressText').textContent =
+      completed >= 3 ? '3 av 3 moduler fullført' : 'Modul ' + current + ' av 3';
+    document.getElementById('progressBar').style.width = ((completed/3)*100 || 33.33) + '%';
+    if(completed === 0) document.getElementById('progressBar').style.width='33.33%';
+    if(completed === 1) document.getElementById('progressBar').style.width='66.66%';
+    if(completed >= 2) document.getElementById('progressBar').style.width='100%';
+    document.getElementById('finalBox').style.display = state.completed3 ? 'block' : 'none';
+  }
+
+  function setup(n){
+    const area = document.getElementById('answer'+n);
+    const counter = document.getElementById('count'+n);
+    const reveal = document.getElementById('reveal'+n);
+    const model = document.getElementById('model'+n);
+    const complete = document.getElementById('complete'+n);
+    const status = document.getElementById('status'+n);
+
+    if(state['answer'+n]) area.value = state['answer'+n];
+    if(state['revealed'+n]){
+      model.classList.add('show');
+      reveal.textContent='Forventet svar er åpnet';
+      complete.disabled=false;
+      status.textContent='Sammenlign svarene og fullfør modulen når du er klar.';
+    }
+    if(state['completed'+n]){
+      complete.disabled=true;
+      complete.textContent = n === 3 ? 'Læringsstien er fullført' : 'Modul ' + n + ' er fullført';
+      status.textContent='✓ Fullført';
+    }
+
+    function onInput(){
+      state['answer'+n]=area.value;
+      save();
+      counter.textContent = area.value.length + ' tegn' + (area.value.length < MIN ? ' · skriv minst '+MIN+' tegn for å åpne forventet svar' : ' · du kan nå åpne forventet svar');
+      reveal.disabled = area.value.trim().length < MIN || !!state['revealed'+n];
+    }
+    area.addEventListener('input', onInput);
+    onInput();
+
+    reveal.addEventListener('click', function(){
+      if(area.value.trim().length < MIN) return;
+      state['revealed'+n]=true;
+      save();
+      model.classList.add('show');
+      reveal.disabled=true;
+      reveal.textContent='Forventet svar er åpnet';
+      complete.disabled=false;
+      status.textContent='Sammenlign svarene og fullfør modulen når du er klar.';
+      model.scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+
+    complete.addEventListener('click', function(){
+      if(!state['revealed'+n]) return;
+      state['completed'+n]=true;
+      save();
+      complete.disabled=true;
+      complete.textContent = n === 3 ? 'Læringsstien er fullført' : 'Modul ' + n + ' er fullført';
+      status.textContent='✓ Fullført';
+      if(n < 3){
+        unlockModule(n+1);
+        updateProgress();
+        document.getElementById('module'+(n+1)).scrollIntoView({behavior:'smooth', block:'start'});
+      } else {
+        updateProgress();
+        document.getElementById('finalBox').scrollIntoView({behavior:'smooth', block:'center'});
+      }
+    });
+  }
+
+  if(state.completed1) unlockModule(2);
+  if(state.completed2) unlockModule(3);
+  setup(1); setup(2); setup(3);
+  updateProgress();
+
+  document.getElementById('resetBtn').addEventListener('click', function(){
+    if(confirm('Vil du nullstille alle svar og progresjon i denne nettleseren?')){
+      localStorage.removeItem('borealLearningPath');
+      location.reload();
+    }
+  });
+})();
+</script>
+<script>
+(function(){
+  const root = document.documentElement;
+  const reducedMotion = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const modules = [1,2,3].map(n => document.getElementById('module'+n));
+  const intro = document.getElementById('storyIntro');
+  const finalBox = document.getElementById('finalBox');
+  const sections = [intro, ...modules, finalBox].filter(Boolean);
+  const railButtons = Array.from(document.querySelectorAll('.story-step'));
+  const storyLocation = document.getElementById('storyLocation');
+  const readingBar = document.getElementById('readingProgressBar');
+  const transition1 = document.getElementById('transition1');
+  const transition2 = document.getElementById('transition2');
+
+  const labels = {
+    intro:'Introduksjon',
+    m1:'Modul 1 · Predasjon',
+    m2:'Modul 2 · Blåbær',
+    m3:'Modul 3 · Klima',
+    synth:'Syntese'
+  };
+
+  function state(){
+    try{
+      return JSON.parse(localStorage.getItem('borealLearningPath') || '{}');
+    }catch(e){
+      return {};
+    }
+  }
+
+  function storyKeyFor(el){
+    if(!el) return 'intro';
+    if(el === intro) return 'intro';
+    if(el === finalBox) return 'synth';
+    if(el.id === 'module1') return 'm1';
+    if(el.id === 'module2') return 'm2';
+    if(el.id === 'module3') return 'm3';
+    return 'intro';
+  }
+
+  function syncCompletionUI(){
+    const s = state();
+    const unlocked = {
+      intro:true,
+      m1:true,
+      m2:!!s.completed1,
+      m3:!!s.completed2,
+      synth:!!s.completed3
+    };
+    const complete = {
+      intro:true,
+      m1:!!s.completed1,
+      m2:!!s.completed2,
+      m3:!!s.completed3,
+      synth:!!s.completed3
+    };
+
+    railButtons.forEach(btn=>{
+      const key = btn.dataset.storyKey;
+      btn.classList.toggle('is-complete', !!complete[key]);
+      btn.classList.toggle('is-locked', !unlocked[key]);
+      btn.disabled = !unlocked[key];
+      btn.setAttribute('aria-disabled', String(!unlocked[key]));
+    });
+
+    if(transition1){
+      transition1.classList.toggle('is-unlocked', !!s.completed1);
+      transition1.setAttribute('aria-hidden', String(!s.completed1));
+    }
+    if(transition2){
+      transition2.classList.toggle('is-unlocked', !!s.completed2);
+      transition2.setAttribute('aria-hidden', String(!s.completed2));
+    }
+  }
+
+  function setActive(key){
+    railButtons.forEach(btn=>{
+      const active = btn.dataset.storyKey === key;
+      btn.classList.toggle('is-active', active);
+      if(active) btn.setAttribute('aria-current','step');
+      else btn.removeAttribute('aria-current');
+    });
+    if(storyLocation) storyLocation.textContent = labels[key] || 'Læringssti';
+    modules.forEach((m,idx)=>{
+      m.classList.toggle('is-story-active', key === 'm'+(idx+1));
+    });
+  }
+
+  railButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      if(btn.disabled) return;
+      const targetId = btn.dataset.target;
+      let target = null;
+      if(targetId === 'intro-story') target = intro;
+      else target = document.getElementById(targetId);
+      if(target){
+        target.scrollIntoView({
+          behavior: reducedMotion ? 'auto' : 'smooth',
+          block:'start'
+        });
+      }
+    });
+  });
+
+  // Reveal content as it enters the viewport.
+  const revealEls = Array.from(document.querySelectorAll('.story-reveal'));
+  if(reducedMotion || !('IntersectionObserver' in window)){
+    revealEls.forEach(el=>el.classList.add('is-visible'));
+  } else {
+    const revealObserver = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    revealEls.forEach(el=>revealObserver.observe(el));
+  }
+
+  // Track active chapter.
+  if('IntersectionObserver' in window){
+    const ratios = new Map();
+    const sectionObserver = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>ratios.set(entry.target, entry.intersectionRatio));
+      let best = null;
+      let bestRatio = 0;
+      sections.forEach(sec=>{
+        const r = ratios.get(sec) || 0;
+        if(r > bestRatio){
+          bestRatio = r;
+          best = sec;
+        }
+      });
+      if(best) setActive(storyKeyFor(best));
+    }, {
+      threshold:[0,.1,.2,.35,.5,.7],
+      rootMargin:'-18% 0px -52% 0px'
+    });
+    sections.forEach(sec=>sectionObserver.observe(sec));
+  }
+
+  // Reading progress and subtle photo parallax.
+  let ticking = false;
+  function updateOnScroll(){
+    ticking = false;
+    const doc = document.documentElement;
+    const max = Math.max(1, doc.scrollHeight - window.innerHeight);
+    const pct = Math.min(100, Math.max(0, (window.scrollY / max) * 100));
+    if(readingBar) readingBar.style.width = pct.toFixed(1) + '%';
+
+    if(!reducedMotion){
+      document.querySelectorAll('.parallax-frame').forEach(frame=>{
+        const rect = frame.getBoundingClientRect();
+        if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+        const center = rect.top + rect.height/2;
+        const viewportCenter = window.innerHeight/2;
+        const delta = (center - viewportCenter) / Math.max(window.innerHeight,1);
+        const shift = Math.max(-20, Math.min(20, -delta * 26));
+        const img = frame.querySelector('.parallax-image');
+        if(img) img.style.setProperty('--parallax-y', shift.toFixed(1)+'px');
+      });
+
+      document.querySelectorAll('.micro-parallax').forEach(img=>{
+        const rect = img.getBoundingClientRect();
+        if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+        const delta = ((rect.top + rect.height/2) - window.innerHeight/2) / Math.max(window.innerHeight,1);
+        const shift = Math.max(-7, Math.min(7, -delta * 8));
+        img.style.setProperty('--micro-y', shift.toFixed(1)+'px');
+      });
+    }
+  }
+  function onScroll(){
+    if(!ticking){
+      ticking = true;
+      requestAnimationFrame(updateOnScroll);
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  updateOnScroll();
+
+  // Keep story navigation in sync with the existing module completion system.
+  ['complete1','complete2','complete3'].forEach((id,idx)=>{
+    const btn = document.getElementById(id);
+    if(btn){
+      btn.addEventListener('click', ()=>{
+        setTimeout(()=>{
+          syncCompletionUI();
+          const s = state();
+          if(idx === 0 && s.completed1 && transition1){
+            transition1.scrollIntoView({
+              behavior: reducedMotion ? 'auto' : 'smooth',
+              block:'center'
+            });
+          } else if(idx === 1 && s.completed2 && transition2){
+            transition2.scrollIntoView({
+              behavior: reducedMotion ? 'auto' : 'smooth',
+              block:'center'
+            });
+          } else if(idx === 2 && s.completed3 && finalBox){
+            finalBox.classList.add('final-story-pulse');
+          }
+        },80);
+      });
+    }
+  });
+
+  // Observe module unlocking caused by the original script.
+  const classObserver = new MutationObserver(()=>syncCompletionUI());
+  modules.forEach(m=>{
+    if(m) classObserver.observe(m,{attributes:true,attributeFilter:['class']});
+  });
+
+  syncCompletionUI();
+  setActive('intro');
+})();
+</script><script>/* Previous compact-header controller disabled. Replaced by stable latched controller below to prevent layout oscillation. */</script><script>
+(function(){
+  const rail = document.querySelector('.story-rail');
+  const slot = document.querySelector('.story-rail-slot');
+  const compactCount = document.getElementById('compactModuleCount');
+  const modules = [1,2,3].map(n => document.getElementById('module'+n));
+
+  if(!rail || !slot) return;
+
+  const moduleLabels = {
+    module1:'Modul 1 av 3',
+    module2:'Modul 2 av 3',
+    module3:'Modul 3 av 3'
+  };
+
+  let raf = null;
+  let currentModuleId = null;
+  let compactLatched = false;
+
+  function syncSlotHeight(){
+    /* Measure only in full mode. The slot then preserves this footprint
+       while the rail is fixed in compact mode. */
+    if(!rail.classList.contains('is-compact')){
+      const h = Math.ceil(rail.getBoundingClientRect().height);
+      if(h > 0){
+        slot.style.setProperty('--story-rail-slot-height', h + 'px');
+      }
+    }
+  }
+
+  function activeModuleAtMarker(){
+    const markerY = 150;
+    for(const module of modules){
+      if(!module || module.classList.contains('locked')) continue;
+      const r = module.getBoundingClientRect();
+      if(r.top <= markerY && r.bottom > markerY){
+        return module;
+      }
+    }
+    return null;
+  }
+
+  function setCompact(on, module){
+    rail.classList.toggle('is-compact', on);
+    if(compactCount){
+      compactCount.textContent = module ? (moduleLabels[module.id] || '') : 'Start';
+    }
+  }
+
+  function update(){
+    raf = null;
+
+    const active = activeModuleAtMarker();
+
+    /* Once the marker has actually left the module, fully reset.
+       We do NOT expand just because the learner is near the module bottom.
+       That was the source of the rapid compact/full oscillation. */
+    if(!active){
+      currentModuleId = null;
+      compactLatched = false;
+      setCompact(false, null);
+      syncSlotHeight();
+      return;
+    }
+
+    if(active.id !== currentModuleId){
+      currentModuleId = active.id;
+      compactLatched = false;
+      setCompact(false, active);
+      syncSlotHeight();
+    }
+
+    const rect = active.getBoundingClientRect();
+    const header = active.querySelector('.module-header');
+    const headerHeight = header ? header.offsetHeight : 130;
+    const collapseAfter = Math.max(130, headerHeight + 45);
+    const distanceIntoModule = -rect.top;
+
+    /* Hysteresis/latching:
+       after compact mode has started for a module, it remains compact until
+       the module is completely left at the marker line. */
+    if(!compactLatched && distanceIntoModule > collapseAfter){
+      compactLatched = true;
+    }
+
+    setCompact(compactLatched, active);
+
+    if(!compactLatched){
+      syncSlotHeight();
+    }
+  }
+
+  function schedule(){
+    if(raf === null){
+      raf = requestAnimationFrame(update);
+    }
+  }
+
+  window.addEventListener('scroll', schedule, {passive:true});
+  window.addEventListener('resize', ()=>{
+    /* On resize, briefly recalculate the full footprint if we're not compact. */
+    syncSlotHeight();
+    schedule();
+  }, {passive:true});
+
+  document.querySelectorAll('details').forEach(d=>{
+    d.addEventListener('toggle', schedule);
+  });
+
+  const mutationObserver = new MutationObserver(schedule);
+  modules.forEach(m=>{
+    if(m) mutationObserver.observe(m, {
+      attributes:true,
+      attributeFilter:['class']
+    });
+  });
+
+  syncSlotHeight();
+  update();
+})();
+</script></body>
+</html>
+ene, blant annet blåbærlyng. I tillegg kan temperatur, snøforhold og værmønstre påvirke flere ledd i næringsnettet samtidig.</p><div class="intro-question story-reveal"><strong>Læringsstiens hovedspørsmål:</strong> Hvordan kan predasjon, plantekvalitet, smågnagere og klima virke sammen og skape synkrone bestandssvingninger i den boreale skogen?</div><div class="species-intro story-reveal"><h3>Møt noen av skogsfuglene</h3><p>Storfugl og orrfugl er tydelig kjønnsdimorfe: hann og hunn ser svært forskjellige ut. Disse artene møter du igjen i tidsseriene senere i læringsstien.</p><div class="species-gallery"><div class="species-card"><img alt="Tiur, hann av storfugl" class="micro-parallax" loading="lazy" src="images_web/art_tiur.webp"/><div class="species-meta"><span class="species-name">Tiur</span><span class="photo-credit">Foto: Bjørn Aksel Bjerke</span></div></div><div class="species-card"><img alt="Røy, hunn av storfugl" class="micro-parallax" loading="lazy" src="images_web/art_roy.webp"/><div class="species-meta"><span class="species-name">Røy</span><span class="photo-credit">Foto: Bjørn Aksel Bjerke</span></div></div><div class="species-card"><img alt="Orrhane, hann av orrfugl" class="micro-parallax" loading="lazy" src="images_web/art_orrhane.webp"/><div class="species-meta"><span class="species-name">Orrhane</span><span class="photo-credit">Foto: Bjørn Aksel Bjerke</span></div></div><div class="species-card"><img alt="Orrhøne, hunn av orrfugl" class="micro-parallax" loading="lazy" src="images_web/art_orrhone.webp"/><div class="species-meta"><span class="species-name">Orrhøne</span><span class="photo-credit">Foto: Bjørn Aksel Bjerke</span></div></div></div></div><p class="story-reveal">Gjennom læringsstien skal du undersøke dette som en økolog: Du møter først en forklaring, studerer data fra forskning, vurderer hva figuren faktisk viser, og spør deretter om funnene støtter hypotesen eller peker mot en mer sammensatt forklaring. <em>Målet er ikke å finne én fasit, men å forstå hvordan flere mekanismer kan virke samtidig og med tidsforsinkelser.</em></p></section>
 <div aria-label="Progresjon" class="toolbar">
 <div class="progress-text" id="progressText">Modul 1 av 3</div>
 <div aria-hidden="true" class="progress-shell"><div class="progress-bar" id="progressBar"></div></div>
